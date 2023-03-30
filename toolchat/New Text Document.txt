@@ -1,0 +1,29 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Khởi tạo trình duyệt
+driver = webdriver.Chrome()
+
+# Truy cập vào trang web chatbot
+driver.get('https://www.example.com/chatbot')
+
+# Tìm ô nhập tin nhắn
+input_box = driver.find_element_by_id('input-box')
+
+# Nhập tin nhắn và gửi
+input_box.send_keys('Xin chào')
+input_box.send_keys(Keys.ENTER)
+
+# Đợi một chút để chatbot xử lý
+time.sleep(2)
+
+# Nhận tin nhắn phản hồi
+output_box = driver.find_element_by_id('output-box')
+response = output_box.text
+
+# In ra tin nhắn phản hồi
+print(response)
+
+# Đóng trình duyệt
+driver.quit()
